@@ -1,0 +1,19 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2%;
+  background-color: #58acd7;
+  height: 7vh;
+  color: #ffe638;
+  font-weight: bold;
+
+  .todo {
+    margin: 0;
+    font-size: 3vh;
+  }
+
+  .title {
+    text-transform: capitalize;
+  }
+}

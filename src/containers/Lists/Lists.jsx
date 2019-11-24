@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
-import firebase, { provider } from "../../firebase";
+import React, { Component } from "react";
+import Header from "../../components/Header";
 import styles from "../Lists/Lists.module.scss";
 
 class Lists extends Component {
-    state = { user: null, name: "" }
+  state = { user: null, name: "" };
 
-    signIn = () => {
-        firebase
-          .auth()
-          .signInWithPopup(provider)
-          .then(result => {
-            const user = result.user;
-            this.setState({
-              user,
-            });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      };
-    render() { 
-        return (  );
-    }
+  render() {
+    return (
+      <section>
+        <Header title="Your lists" />
+      </section>
+    );
+  }
 }
 
-
-export default Lists ;
+export default Lists;

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import styles from "./App.module.scss";
-import Lists from "../Lists";
+import LoginPage from "../LoginPage";
 
 class App extends Component {
   state = {};
   render() {
     return (
       <main>
-        <Lists />
+        <LoginPage />
+        {/* <ListsPage /> */}
+        {/* <YourList /> */}
       </main>
     );
   }
