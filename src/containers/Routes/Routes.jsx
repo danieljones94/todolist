@@ -6,7 +6,7 @@ import { Router, globalHistory } from "@reach/router";
 import PrivateRoutes from "../../components/PrivateRoutes";
 
 class Routes extends Component {
-  state = { user: null };
+  state = { user: null, name: "" };
 
   signIn = () => {
     firebase
@@ -14,7 +14,8 @@ class Routes extends Component {
       .signInWithPopup(provider)
       .then(result => {
         const user = result.user;
-        this.setState({ user });
+        const name = result.user.displayName; 
+        this.setState({ user, name});
         globalHistory.navigate("/private/lists");
       })
       .catch(error => {
@@ -25,9 +26,9 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <LoginPage path="/loginpage" signIn={this.signIn} />
-        <PrivateRoutes path="private" user={this.state.user}>
-          <Lists path="/lists" />
+        <LoginPage path="/" signIn={this.signIn}/>
+        <PrivateRoutes path="private" user={this.state.user} name={this.state.name}>
+          <Lists path="/lists"  name={this.state.name}/>
         </PrivateRoutes>
       </Router>
     );

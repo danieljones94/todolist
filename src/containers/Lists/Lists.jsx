@@ -3,12 +3,14 @@ import Header from "../../components/Header";
 import styles from "../Lists/Lists.module.scss";
 
 class Lists extends Component {
-  state = {};
+  state = { };
 
+  
+  
   render() {
     return (
       <section>
-        <Header title="Your lists" />
+        <Header title={`Hello ${this.props.name}, please see your lists`}/>
       </section>
     );
   }
