@@ -7,7 +7,7 @@ class List extends Component {
     return (
       <div>
         <p>{this.props.list.title}</p>
-        <p>{this.props.list.listItem}</p>
+        <p>{this.props.list.listContent}</p>
       </div>
     );
   }

@@ -78,6 +78,14 @@ class Lists extends Component {
     this.getListFromDataBase(true);
   };
 
+  setTitle = () => {
+    this.setState({ inputTitle });
+  };
+
+  setDate = () => {
+    this.setState({ inputDate });
+  };
+
   render() {
     return (
       <section>
@@ -88,7 +96,13 @@ class Lists extends Component {
         />
         <section>
           {this.state.filteredLists.map(list => (
-            <List list={list} key={list.docId} />
+            <List
+              list={list}
+              key={list.docId}
+              inputTitle={this.state.inputTitle}
+              date={this.state.inputDate}
+              listContent={this.state.listContent}
+            />
           ))}
         </section>
       </section>
