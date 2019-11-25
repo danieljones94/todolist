@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import styles from "./Header.module.scss";
+import SearchBar from "../SearchBar/SearchBar";
 
 class Header extends Component {
-  state = {};
+  state = { };
+
+  // setSearchText = event => { 
+  //   this.setState({ searchText: event.target.value });
+  // }
+
+
+
   render() {
     return (
       <header className={styles.headerContainer}>
@@ -14,11 +22,7 @@ class Header extends Component {
           <h1 className={styles.title}>{this.props.title}</h1>
         </div>
         <div>
-          <input
-            type="text"
-            placeholder="Search here..."
-            className={styles.searchBar}
-          ></input>
+          <SearchBar setSearchText={this.setSearchText} searchText={this.props.searchText}/>
         </div>
       </header>
     );
