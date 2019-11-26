@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class ListInput extends Component {
-  state = { inputTitle: "", inputDate: "" };
+  state = { inputTitle: "", inputDate: "", inputContent: "" };
 
   setTitle = event => {
     const inputTitle = event.target.value;
@@ -15,11 +15,19 @@ class ListInput extends Component {
     this.props.setDate(inputDate);
   };
 
+  setContent = event => {
+    const inputContent = event.target.value;
+    this.setState({ inputContent });
+    this.props.setContent(inputContent);
+  };
+
   render() {
     return (
       <section>
         <label for="title">Title</label>
         <input type="text" id="title" onChange={this.setTitle} />
+        <label for="content">Item</label>
+        <input type="text" id="content" onChange={this.setContent} />
         <label for="date">Date</label>
         <input type="date" id="date" onChange={this.setDate} />
         <button onClick={this.props.addList}>Add list</button>

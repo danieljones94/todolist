@@ -1,28 +1,34 @@
 import React, { Component } from "react";
 import styles from "./List.module.scss";
-import { firestore } from "firebase";
+import { firestore } from "../../firebase";
 
 class List extends Component {
   state = {};
 
   deleteList = () => {
-    firestore
-      .CollectionReference("Lists")
-      .doc(this.props.listData.docId)
-      .delete()
-      .then(() => {
-        this.props.getListFromDataBase(true);
-      })
-      .catch(error => {
-        console.error("Couldn't remove list");
-      });
+    if (this.props.user.uid) {
+      firestore
+        .collection("Lists")
+        .doc(this.props.data.docId)
+        .delete()
+        .then(() => {
+          this.props.getListFromDatabase(true);
+        })
+        .catch(error => {
+          console.error("Couldn't remove list", error);
+        });
+    } else {
+      alert("You can't delete this list");
+    }
+    // console.log(this.props.user);
   };
 
   render() {
     return (
       <section>
-        <p>{this.props.listData.title}</p>
-        <p>{this.props.listData.content}</p>
+        <p>{this.props.data.title}</p>
+        <p>{this.props.data.content}</p>
+        <button onClick={this.deleteList}>Delete</button>
       </section>
     );
   }

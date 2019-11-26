@@ -1,7 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
 import SearchBar from "./SearchBar";
-import expectExport from "expect";
 
 describe("SearchBar component tests", () => {
   let component;

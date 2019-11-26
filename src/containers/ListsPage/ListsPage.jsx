@@ -9,7 +9,7 @@ class ListsPage extends Component {
     searchText: "",
     lists: [],
     filteredLists: [],
-    listContent: [],
+    listContent: "",
     filter: "all",
     listFilter: "all",
     addList: [],
@@ -18,7 +18,7 @@ class ListsPage extends Component {
   };
   setSearchText = event => {
     const searchText = event.target.value;
-    this.setState({ searchText }, this.filterLists);
+    this.setState({ searchText }, this.getListFromDatabase);
   };
 
   componentDidMount() {
@@ -31,7 +31,6 @@ class ListsPage extends Component {
         const lists = querySnapshot.docs.map(doc => {
           return { ...doc.data(), docId: doc.id };
         });
-        this.setState({ lists: lists, filteredLists: lists });
       });
     this.getListFromDatabase();
   }
@@ -52,7 +51,7 @@ class ListsPage extends Component {
   };
 
   submitContent = list => {
-    const listData = list
+    const data = list
       ? {
           title: this.state.inputTitle,
           content: this.state.listContent,
@@ -66,14 +65,11 @@ class ListsPage extends Component {
           .collection("Lists")
           .doc()
           .set({
-            title: this.state.inputTitle,
-            content: this.state.listContent,
-            date: new Date(),
-            filter: this.state.listFilter
+            data
           })
           .then(
             this.getListFromDatabase(),
-            this.setState({ inputTitle: "", listContent: [], inputDate: "" })
+            this.setState({ inputTitle: "", listContent: "", inputDate: "" })
           )
           .catch(error => console.error("list didnt submit", error))
       : console.log("required data missing");
@@ -91,10 +87,11 @@ class ListsPage extends Component {
           };
           return data;
         });
-        this.setState({
-          lists,
-          filteredLists: lists
-        });
+        let filteredLists = lists.filter(list => list.filter === "all");
+        let searchForFilteredLists = filteredLists.filter(list =>
+          list.title.toLowerCase().includes(this.state.searchText.toLowerCase())
+        );
+        this.setState({ lists: lists, filteredLists: searchForFilteredLists });
       });
   };
 
@@ -113,6 +110,10 @@ class ListsPage extends Component {
     this.setState({ inputDate });
   };
 
+  setInputContent = listContent => {
+    this.setState({ listContent });
+  };
+
   render() {
     console.log(this.state.lists);
     return (
@@ -127,9 +128,11 @@ class ListsPage extends Component {
             setTitle={this.setInputTitle}
             lists={this.state.lists}
             setDate={this.setInputDate}
+            setContent={this.setInputContent}
             listContent={this.state.listContent}
-            getListFromDataBase={this.getListFromDatabase}
+            getListFromDatabase={this.getListFromDatabase}
             addList={this.addList}
+            user={this.props.user}
           />
         </section>
       </section>

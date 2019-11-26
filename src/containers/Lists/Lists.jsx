@@ -15,6 +15,7 @@ class Lists extends Component {
           setTitle={this.props.setTitle}
           setDate={this.props.setDate}
           lists={this.props.lists}
+          setContent={this.props.setContent}
           inputHeader="Create a new list"
           listFilter={this.props.listFilter}
           updateFilter={this.props.updateFilter}
@@ -23,9 +24,10 @@ class Lists extends Component {
         <section>
           {this.props.lists.map((list, docId) => (
             <List
-              listData={list}
+              data={list}
               key={docId}
               getListFromDatabase={this.props.getListFromDatabase}
+              user={this.props.user}
             />
           ))}
         </section>
