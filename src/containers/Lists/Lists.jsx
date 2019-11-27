@@ -87,6 +87,7 @@ class Lists extends Component {
   };
 
   render() {
+    console.log(this.state.inputTitle);
     return (
       <section>
         <Header
