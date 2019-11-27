@@ -22,7 +22,7 @@ class Header extends Component {
         <div>
           <SearchBar
             setSearchText={this.props.setSearchText}
-            searchText={this.props.searchText}
+            // searchText={this.props.searchText}
           />
         </div>
       </header>

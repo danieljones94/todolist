@@ -16,14 +16,20 @@ class ListsPage extends Component {
     inputTitle: "",
     inputDate: ""
   };
+
   setSearchText = event => {
-    const searchText = event.target.value;
-    this.setState({ searchText }, this.getListFromDatabase);
+    let list = this.state.lists;
+    list = list.filter(item => {
+      return (
+        item.content.toLowerCase().search(event.target.value.toLowerCase()) !==
+        -1
+      );
+    });
+    this.setState({ list: list, lists: list });
+    console.log(list);
   };
 
   componentDidMount() {
-    console.log(this.state.lists);
-
     firestore
       .collection("Lists")
       .get()
@@ -31,6 +37,7 @@ class ListsPage extends Component {
         const lists = querySnapshot.docs.map(doc => {
           return { ...doc.data(), docId: doc.id };
         });
+        this.setState({ lists, filteredLists: lists });
       });
     this.getListFromDatabase();
   }
@@ -50,29 +57,28 @@ class ListsPage extends Component {
     this.setState({ filteredLists });
   };
 
-  submitContent = list => {
-    const data = list
-      ? {
-          title: this.state.inputTitle,
-          content: this.state.listContent,
-          date: new Date(),
-          filter: this.state.listFilter
-        }
-      : null;
+  submitContent = () => {
+    const data = {
+      title: this.state.inputTitle,
+      content: this.state.listContent,
+      date: new Date(),
+      filter: this.state.listFilter
+    };
 
-    this.state.inputTitle != null
-      ? firestore
-          .collection("Lists")
-          .doc()
-          .set({
-            data
-          })
-          .then(
-            this.getListFromDatabase(),
-            this.setState({ inputTitle: "", listContent: "", inputDate: "" })
-          )
-          .catch(error => console.error("list didnt submit", error))
-      : console.log("required data missing");
+    if (this.state.inputTitle === "hello") {
+      console.log("hello");
+    } else {
+      console.log("success");
+      console.log(this.state.lists.title);
+      firestore
+        .collection("Lists")
+        .add(data)
+        .then(
+          this.getListFromDatabase(),
+          this.setState({ inputTitle: "", listContent: "", inputDate: "" })
+        )
+        .catch(error => console.error("list didnt submit", error));
+    }
   };
 
   getListFromDatabase = () => {
@@ -99,7 +105,6 @@ class ListsPage extends Component {
     this.submitContent();
     this.setState({ listFilter: "other" });
     this.getListFromDatabase(true);
-    console.log("click");
   };
 
   setInputTitle = inputTitle => {
@@ -115,7 +120,6 @@ class ListsPage extends Component {
   };
 
   render() {
-    console.log(this.state.lists);
     return (
       <section>
         <Header
@@ -133,6 +137,7 @@ class ListsPage extends Component {
             getListFromDatabase={this.getListFromDatabase}
             addList={this.addList}
             user={this.props.user}
+            filteredLists={this.state.filteredLists}
           />
         </section>
       </section>

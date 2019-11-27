@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import Header from "../../components/Header";
 import styles from "../Lists/Lists.module.scss";
 import List from "../../components/List";
-import { firestore } from "../../firebase";
 import ListInput from "../../components/ListInput";
 
 class Lists extends Component {
   state = {};
   render() {
-    console.log(this.props.lists);
     return (
       <section>
         <ListInput
