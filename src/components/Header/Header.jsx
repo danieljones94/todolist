@@ -3,13 +3,11 @@ import styles from "./Header.module.scss";
 import SearchBar from "../SearchBar/SearchBar";
 
 class Header extends Component {
-  state = { };
+  state = {};
 
-  // setSearchText = event => { 
+  // setSearchText = event => {
   //   this.setState({ searchText: event.target.value });
   // }
-
-
 
   render() {
     return (
@@ -22,7 +20,10 @@ class Header extends Component {
           <h1 className={styles.title}>{this.props.title}</h1>
         </div>
         <div>
-          <SearchBar setSearchText={this.setSearchText} searchText={this.props.searchText}/>
+          <SearchBar
+            setSearchText={this.props.setSearchText}
+            // searchText={this.props.searchText}
+          />
         </div>
       </header>
     );

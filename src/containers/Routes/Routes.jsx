@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Lists from "../Lists";
+import ListsPage from "../ListsPage";
 import LoginPage from "../LoginPage";
 import firebase, { provider } from "../../firebase";
 import { Router, globalHistory } from "@reach/router";
@@ -14,8 +14,8 @@ class Routes extends Component {
       .signInWithPopup(provider)
       .then(result => {
         const user = result.user;
-        const name = result.user.displayName; 
-        this.setState({ user, name});
+        const name = result.user.displayName;
+        this.setState({ user, name });
         globalHistory.navigate("/private/lists");
       })
       .catch(error => {
@@ -26,9 +26,17 @@ class Routes extends Component {
   render() {
     return (
       <Router>
-        <LoginPage path="/" signIn={this.signIn}/>
-        <PrivateRoutes path="private" user={this.state.user} name={this.state.name}>
-          <Lists path="/lists"  name={this.state.name}/>
+        <LoginPage path="/" signIn={this.signIn} />
+        <PrivateRoutes
+          path="private"
+          user={this.state.user}
+          name={this.state.name}
+        >
+          <ListsPage
+            path="/lists"
+            name={this.state.name}
+            user={this.state.user}
+          />
         </PrivateRoutes>
       </Router>
     );
