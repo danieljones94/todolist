@@ -9,9 +9,14 @@ class LoginPage extends Component {
     return (
       <section>
         <Header title="Please log in to see your to-do lists" />
-        <section>
-          <button type="button" onClick={this.props.signIn}>
+        <section className={styles.loginContainer}>
+          <button
+            type="button"
+            onClick={this.props.signIn}
+            className={styles.loginButton}
+          >
             <span>TO</span>
+            <br />
             <span>DO</span>
           </button>
         </section>
