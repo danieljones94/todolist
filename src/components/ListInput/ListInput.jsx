@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./ListInput.module.scss";
 
 class ListInput extends Component {
   state = { inputTitle: "", inputDate: "", inputContent: "" };
@@ -23,7 +24,7 @@ class ListInput extends Component {
 
   render() {
     return (
-      <section>
+      <section className={styles.inputs}>
         <label for="title">Title</label>
         <input type="text" id="title" onChange={this.setTitle} />
         <label for="content">Item</label>

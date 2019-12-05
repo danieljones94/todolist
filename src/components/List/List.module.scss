@@ -1,0 +1,30 @@
+.listContainer {
+  border: solid 2px #58acd7;
+  border-radius: 5%;
+  width: 30%;
+  margin: 5vh;
+  text-align: center;
+
+  .title {
+    background-color: #58acd7;
+    padding: 2vh 0;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    color: #ffe638;
+  }
+
+  .listItem {
+    margin-left: 2vh;
+  }
+
+  .button {
+    background: #58acd7;
+    color: #ffe638;
+    border: none;
+    margin: 2vh;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.inputs {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  margin-top: 3vh;
+  color: #58acd7;
+}
+label {
+  margin: 2vh;
+}
+input {
+  background-color: transparent;
+  border: solid 2px #58acd7;
+  border-radius: 10px;
+  padding: 1vh;
+  color: #58acd7;
+}
+
+button {
+  background: white;
+  border: none;
+  margin-left: 2vh;
+  color: #58acd7;
+  border: 2px solid #58acd7;
+  border-radius: 10px;
+}

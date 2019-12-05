@@ -25,10 +25,12 @@ class List extends Component {
 
   render() {
     return (
-      <section>
-        <p>{this.props.data.title}</p>
-        <p>{this.props.data.content}</p>
-        <button onClick={this.deleteList}>Delete</button>
+      <section className={styles.listContainer}>
+        <p className={styles.title}>{this.props.data.title}</p>
+        <p className={styles.listItem}>{this.props.data.content}</p>
+        <button className={styles.button} onClick={this.deleteList}>
+          Delete
+        </button>
       </section>
     );
   }
