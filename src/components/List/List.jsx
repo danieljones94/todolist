@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styles from "./List.module.scss";
 import { firestore } from "../../firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 class List extends Component {
   state = {};
@@ -25,11 +27,17 @@ class List extends Component {
 
   render() {
     return (
-      <section>
-        <p>{this.props.data.title}</p>
-        <p>{this.props.data.content}</p>
-        <button onClick={this.deleteList}>Delete</button>
-      </section>
+      <article className={styles.listContainer}>
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={this.deleteList}
+          className={styles.deleteButton}
+        ></FontAwesomeIcon>
+        <p className={styles.listTitle}>{this.props.data.title}</p>
+        <ul>
+          <li>{this.props.data.content}</li>
+        </ul>
+      </article>
     );
   }
 }

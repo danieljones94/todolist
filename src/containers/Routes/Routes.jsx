@@ -6,7 +6,7 @@ import { Router, globalHistory } from "@reach/router";
 import PrivateRoutes from "../../components/PrivateRoutes";
 
 class Routes extends Component {
-  state = { user: null, name: "" };
+  state = { user: 1, name: "" };
 
   signIn = () => {
     firebase

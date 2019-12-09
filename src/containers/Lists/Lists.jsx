@@ -20,7 +20,7 @@ class Lists extends Component {
           updateFilter={this.props.updateFilter}
           addList={this.props.addList}
         />
-        <section>
+        <section className={styles.listsContainer}>
           {this.props.lists.map((list, docId) => (
             <List
               data={list}

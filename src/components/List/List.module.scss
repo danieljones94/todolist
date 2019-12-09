@@ -1,0 +1,18 @@
+.listContainer {
+  box-shadow: 10px 5px 5px grey;
+  border: 2px solid grey;
+  margin: 5vh;
+  width: 20vw;
+  color: #58acd7;
+
+  .listTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .deleteButton {
+    position: relative;
+    left: 95%;
+  }
+}
