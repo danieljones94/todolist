@@ -27,6 +27,7 @@ class List extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <article className={styles.listContainer}>
         <FontAwesomeIcon
           icon={faTrashAlt}
@@ -38,6 +39,15 @@ class List extends Component {
           <li>{this.props.data.content}</li>
         </ul>
       </article>
+=======
+      <section className={styles.listContainer}>
+        <p className={styles.title}>{this.props.data.title}</p>
+        <p className={styles.listItem}>{this.props.data.content}</p>
+        <button className={styles.button} onClick={this.deleteList}>
+          Delete
+        </button>
+      </section>
+>>>>>>> d10b0339b9d42f7c191e2f0a577805fd7bfa38ba
     );
   }
 }

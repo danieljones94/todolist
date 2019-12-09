@@ -1,0 +1,16 @@
+.loginContainer {
+  text-align: center;
+}
+
+.loginButton {
+  margin-top: 30vh;
+  font-size: 3em;
+  background: none;
+  color: #58acd7;
+  border: none;
+  font-weight: bold;
+
+  :hover {
+    cursor: pointer;
+  }
+}

@@ -20,10 +20,10 @@ class Header extends Component {
           <h1 className={styles.title}>{this.props.title}</h1>
         </div>
         <div>
-          <SearchBar
+          {/* <SearchBar
             setSearchText={this.props.setSearchText}
             // searchText={this.props.searchText}
-          />
+          /> */}
         </div>
       </header>
     );

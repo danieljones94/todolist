@@ -1,4 +1,5 @@
 .listContainer {
+<<<<<<< HEAD
   box-shadow: 10px 5px 5px grey;
   border: 2px solid grey;
   margin: 5vh;
@@ -14,5 +15,34 @@
   .deleteButton {
     position: relative;
     left: 95%;
+=======
+  border: solid 2px #58acd7;
+  border-radius: 5%;
+  width: 30%;
+  margin: 5vh;
+  text-align: center;
+
+  .title {
+    background-color: #58acd7;
+    padding: 2vh 0;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    color: #ffe638;
+  }
+
+  .listItem {
+    margin-left: 2vh;
+  }
+
+  .button {
+    background: #58acd7;
+    color: #ffe638;
+    border: none;
+    margin: 2vh;
+    &:hover {
+      cursor: pointer;
+    }
+>>>>>>> d10b0339b9d42f7c191e2f0a577805fd7bfa38ba
   }
 }
